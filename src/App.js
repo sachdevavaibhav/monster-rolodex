@@ -8,13 +8,19 @@ import './App.css'
 const App = () => {
   const [monsters, setMonsters] = useState([]) // [current state value(value), function to update value(setValue)]
   const [searchField, setSearchField] = useState('') // [current state value(value), function to update value(setValue)]
+  const [filteredMonsters, setFilteredMonsters] = useState(monsters) // [current state value(value), function to update value(setValue
 
-  console.log('render')
-  fetch('https://jsonplaceholder.typicode.com/users')
-  .then((response) => response.json())
-  .then((users) => setMonsters(users))
 
-  const foundMonsters = monsters.filter((monster) => monster.name.toLocaleLowerCase().includes(searchField))
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then((response) => response.json())
+    .then((users) => setMonsters(users))
+  }, [])
+
+  useEffect(() => {
+    const foundMonsters = monsters.filter((monster) => monster.name.toLocaleLowerCase().includes(searchField))
+    setFilteredMonsters(foundMonsters)
+  }, [searchField, monsters])
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase()
@@ -24,7 +30,7 @@ const App = () => {
     <div className="App">
       <h1 className="app-title">Monster Rolodex</h1>
       <SearchBox onChangeHandler={onSearchChange} placeholder='search monster' className='monster-search-box'/>
-      <CardList monsters={foundMonsters} />
+      <CardList monsters={filteredMonsters} />
     </div>
   )
 }
