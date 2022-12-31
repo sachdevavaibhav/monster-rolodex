@@ -1,30 +1,30 @@
-import { Component } from "react"
+// import { Component } from "react"
 import './card.styles.css'
 
 // Functional component in React
-// const Card = (props) => {
-//     return (
-//         <div key={props.id} className='card-container'>
-//             <img alt={`monster ${props.name}`} src={`https://robohash.org/${props.id}?set=set2&size=180x180`} />
-//             <h2>{props.name}</h2>
-//             <p>{props.email}</p>
-//         </div>
-//     )
-// }
+const Card = (props) => {
+    return (
+        <div key={props.id} className='card-container'>
+            <img alt={`monster ${props.name}`} src={`https://robohash.org/${props.id}?set=set2&size=180x180`} />
+            <h2>{props.name}</h2>
+            <p>{props.email}</p>
+        </div>
+    )
+}
 
 // Class component in React
-class Card extends Component {
-    render()  {
-        const {name, email, id} = this.props  
-        return (  
-        <div key={id} className='card-container'>
-            <img alt={`monster ${name}`} src={`https://robohash.org/${id}?set=set2&size=180x180`} />
-            <h2>{name}</h2>
-            <p>{email}</p>
-        </div>
-        )
-    }
-}
+// class Card extends Component {
+//     render()  {
+//         const {name, email, id} = this.props  
+//         return (  
+//         <div key={id} className='card-container'>
+//             <img alt={`monster ${name}`} src={`https://robohash.org/${id}?set=set2&size=180x180`} />
+//             <h2>{name}</h2>
+//             <p>{email}</p>
+//         </div>
+//         )
+//     }
+// }
 
 export default Card
 
